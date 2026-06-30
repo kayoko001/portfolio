@@ -133,7 +133,6 @@ footer a{
    ===================================================== */
 header.hero{
   padding: 12px 0 56px;
-  border-bottom: 1px solid var(--line);
   margin-bottom: 56px;
   display:grid;
   grid-template-columns: 1fr 240px;
