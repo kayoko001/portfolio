@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayoko Shimomura — About Mockup</title>
+<style>
+  :root{
+    --bg: #FAF9F6;
+    --surface: #FFFFFF;
+    --line: #E4E1D8;
+    --line-strong: #C9C5B8;
+    --text-primary: #1F1E1B;
+    --text-secondary: #5C5A52;
+    --text-muted: #8C897E;
+    --accent: #B8542F;
+    --accent-bg: #F5E7DE;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{ font-family: Georgia, "Times New Roman", serif; }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:40px;
+  }
+  nav .name{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  nav .links{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    color:var(--text-secondary);
+  }
+  nav .links span.active{ color:var(--text-primary); font-weight:600; }
+
+  header.page-head{
+    padding-bottom:40px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:48px;
+  }
+  .eyebrow{
+    font-size:13px;
+    color:var(--text-muted);
+    letter-spacing:0.04em;
+    margin:0 0 14px;
+  }
+  .kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .kicker .mark{
+    width:6px;
+    height:6px;
+    background:var(--accent);
+    flex-shrink:0;
+  }
+  .kicker .text{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-secondary);
+    white-space:nowrap;
+  }
+  .kicker .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h1.title{
+    font-size:32px;
+    line-height:1.2;
+    font-weight:500;
+    margin:0 0 12px;
+  }
+  p.subhead{
+    font-size:16px;
+    color:var(--text-secondary);
+    margin:0;
+    max-width:480px;
+    line-height:1.6;
+  }
+
+  .intro{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap:32px;
+    align-items:start;
+    margin-bottom:56px;
+  }
+
+  .headshot{
+    position:relative;
+    width:200px;
+    height:240px;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#F2F0EA;
+    cursor:pointer;
+  }
+  .headshot .photo{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition: opacity 0.35s ease;
+  }
+  .headshot .photo svg{
+    width:26px;
+    height:26px;
+    color:var(--line-strong);
+  }
+  .headshot .photo span{
+    font-size:11px;
+    color:var(--text-muted);
+    text-align:center;
+    padding:0 16px;
+  }
+  .headshot .photo-a{
+    opacity:1;
+    background:#F2F0EA;
+  }
+  .headshot .photo-b{
+    opacity:0;
+    background:#EAE7DD;
+  }
+  .headshot:hover .photo-a{ opacity:0; }
+  .headshot:hover .photo-b{ opacity:1; }
+  .headshot .hint{
+    position:absolute;
+    bottom:8px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:10px;
+    color:var(--text-muted);
+    letter-spacing:0.03em;
+    z-index:2;
+    pointer-events:none;
+  }
+
+  .intro-copy p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text-primary);
+    margin:0 0 16px;
+  }
+  .intro-copy p:last-child{ margin-bottom:0; }
+
+  section.block{
+    margin-bottom:48px;
+  }
+  .label{
+    font-size:13px;
+    color:var(--text-muted);
+    margin:0 0 16px;
+    text-transform:lowercase;
+    letter-spacing:0.03em;
+  }
+
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:16px;
+  }
+  .skill-cat{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:16px;
+  }
+  .skill-cat h4{
+    font-size:13px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .skill-cat p{
+    font-size:13px;
+    color:var(--text-secondary);
+    margin:0;
+    line-height:1.6;
+  }
+
+  .edu-row{
+    display:grid;
+    grid-template-columns: 140px 1fr;
+    gap:24px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-row .when{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .edu-row h4{
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .edu-row p{
+    font-size:13px;
+    color:var(--text-secondary);
+    margin:0;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-top:8px;
+  }
+
+  @media (max-width: 600px){
+    h1.title{ font-size:26px; }
+    .intro{ grid-template-columns: 1fr; }
+    .headshot{ width:140px; height:168px; }
+    .skills-grid{ grid-template-columns: 1fr; }
+    .edu-row{ grid-template-columns: 1fr; gap:4px; }
+    nav .links{ gap:18px; font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav>
+    <div class="name">Kayoko Shimomura</div>
+    <div class="links">
+      <span>Home</span>
+      <span>Work</span>
+      <span class="active">About</span>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="kicker"><span class="mark"></span><span class="text">about</span><span class="rule"></span></div>
+    <h1 class="title serif">Background and skills</h1>
+    <p class="subhead">Education, languages, and the supporting experience behind the case studies.</p>
+  </header>
+
+  <section class="block">
+    <div class="kicker"><span class="mark"></span><span class="text">skills and languages</span><span class="rule"></span></div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h4>Marketing and growth</h4>
+        <p>GTM strategy, AEO/GEO content strategy, CRM implementation, localization strategy</p>
+      </div>
+      <div class="skill-cat">
+        <h4>AI and technical tools</h4>
+        <p>Claude Code, Claude Cowork, Codex, Canva, Figma, WordPress</p>
+      </div>
+      <div class="skill-cat">
+        <h4>Data</h4>
+        <p>Google Analytics, Search Console, performance-scoring and citation-monitoring model design</p>
+      </div>
+      <div class="skill-cat">
+        <h4>Programming languages</h4>
+        <p>JavaScript, TypeScript, SQL, Cypher, HTML, CSS, PHP</p>
+      </div>
+      <div class="skill-cat">
+        <h4>Languages</h4>
+        <p>Japanese (native), English (proficient, TOEFL 110/120), Korean (proficient, TOPIK level 6/6)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="mark"></span><span class="text">education</span><span class="rule"></span></div>
+    <div class="edu-row">
+      <div class="when">2024 to 2026</div>
+      <div>
+        <h4>M.A., University of Chicago</h4>
+        <p>Humanities, East Asian Languages and Civilizations, GPA 3.96</p>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="when">2020 to 2024</div>
+      <div>
+        <h4>B.A., Soka University of America</h4>
+        <p>Liberal Arts, Dean's list, GPA 3.75</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="mark"></span><span class="text">supporting experience</span><span class="rule"></span></div>
+    <div class="edu-row">
+      <div class="when">2022 to 2024</div>
+      <div>
+        <h4>Development and Data Operations Associate, Soka University of America</h4>
+        <p>Audited and reconciled 20,000+ donor records across PeopleSoft and Excel quarterly</p>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="when">2022 to 2024</div>
+      <div>
+        <h4>Product Marketing Intern, AKA CO., LTD</h4>
+        <p>Localized Korean-language EdTech content into Japanese for consumer and institutional audiences</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>kayoko.shimomura1@gmail.com</span>
+    <span>open to relocate</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

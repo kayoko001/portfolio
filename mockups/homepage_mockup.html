@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayoko Shimomura — Homepage Mockup</title>
+<style>
+  :root{
+    --bg: #FAF9F6;
+    --surface: #FFFFFF;
+    --line: #E4E1D8;
+    --line-strong: #C9C5B8;
+    --text-primary: #1F1E1B;
+    --text-secondary: #5C5A52;
+    --text-muted: #8C897E;
+    --accent: #B8542F;
+    --accent-bg: #F5E7DE;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{ font-family: Georgia, "Times New Roman", serif; }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:48px;
+  }
+  nav .name{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  nav .links{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    color:var(--text-secondary);
+  }
+  nav .links span.active{ color:var(--text-primary); font-weight:600; }
+
+  header.hero{
+    padding: 12px 0 56px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 56px;
+    display:grid;
+    grid-template-columns: 1fr 240px;
+    gap:32px;
+    align-items:start;
+  }
+  .hero-copy{ min-width:0; }
+  .headshot{
+    position:relative;
+    width:240px;
+    height:288px;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#F2F0EA;
+    cursor:pointer;
+  }
+  .headshot .photo{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition: opacity 0.35s ease;
+  }
+  .headshot .photo svg{
+    width:30px;
+    height:30px;
+    color:var(--line-strong);
+  }
+  .headshot .photo span{
+    font-size:11px;
+    color:var(--text-muted);
+    text-align:center;
+    padding:0 14px;
+  }
+  .headshot .photo-a{ opacity:1; background:#F2F0EA; }
+  .headshot .photo-b{ opacity:0; background:#EAE7DD; }
+  .headshot:hover .photo-a{ opacity:0; }
+  .headshot:hover .photo-b{ opacity:1; }
+  .headshot .hint{
+    position:absolute;
+    bottom:8px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:10px;
+    color:var(--text-muted);
+    letter-spacing:0.03em;
+    z-index:2;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-size:13px;
+    color:var(--text-muted);
+    letter-spacing:0.04em;
+    margin:0 0 14px;
+  }
+  .kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .kicker .mark{
+    width:6px;
+    height:6px;
+    background:var(--accent);
+    flex-shrink:0;
+  }
+  .kicker .text{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-secondary);
+    white-space:nowrap;
+  }
+  .kicker .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h1.title{
+    font-size:40px;
+    line-height:1.15;
+    font-weight:500;
+    margin:0 0 14px;
+    max-width:480px;
+  }
+  p.role{
+    font-size:18px;
+    color:var(--text-secondary);
+    margin:0 0 20px;
+    max-width:440px;
+  }
+  p.tagline{
+    font-size:15px;
+    color:var(--text-muted);
+    margin:0;
+    max-width:420px;
+    line-height:1.6;
+  }
+
+  section.about{
+    margin-bottom:56px;
+  }
+  .label{
+    font-size:13px;
+    color:var(--text-muted);
+    margin:0 0 16px;
+    text-transform:lowercase;
+    letter-spacing:0.03em;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 140px 1fr;
+    gap:24px;
+  }
+  .about-copy p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text-primary);
+    margin:0 0 16px;
+  }
+  .about-copy p:last-child{ margin-bottom:0; }
+  .tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
+  .tag{
+    background:var(--accent-bg);
+    color:var(--accent);
+    font-size:12px;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:4px;
+  }
+
+  section.work{
+    margin-bottom:56px;
+  }
+  .work-grid{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .work-card{
+    background:var(--surface);
+    padding:24px 20px;
+  }
+  .work-card .icon{
+    width:18px;
+    height:18px;
+    margin-bottom:16px;
+    color:var(--accent);
+  }
+  .work-card h3{
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .work-card p{
+    font-size:13px;
+    color:var(--text-secondary);
+    line-height:1.6;
+    margin:0 0 16px;
+  }
+  .work-card .stat{
+    font-family: Georgia, serif;
+    font-size:22px;
+    font-weight:500;
+    color:var(--text-primary);
+  }
+  .work-card .stat-label{
+    font-size:11px;
+    color:var(--text-muted);
+    margin-top:2px;
+  }
+
+  section.featured{
+    margin-bottom:56px;
+  }
+  .shot-frame{
+    position:relative;
+    border-radius:8px;
+    overflow:hidden;
+    height:260px;
+    border:1px dashed var(--line-strong);
+    background:#F2F0EA;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .shot-frame .ph-label{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .shot-frame .ph-sub{
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .shot-frame svg{
+    width:26px;
+    height:26px;
+    color:var(--line-strong);
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  footer a{
+    color:var(--text-secondary);
+    text-decoration:none;
+  }
+
+  @media (max-width: 600px){
+    h1.title{ font-size:30px; }
+    header.hero{ grid-template-columns: 1fr; }
+    .headshot{ width:180px; height:216px; order:-1; margin-bottom:20px; }
+    .about-grid{ grid-template-columns: 1fr; gap:8px; }
+    .work-grid{ grid-template-columns: 1fr; }
+    nav .links{ gap:18px; font-size:13px; }
+  }
+
+  .annot{
+    font-size:11px;
+    color:var(--text-muted);
+    text-align:center;
+    margin-top:8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav>
+    <div class="name">Kayoko Shimomura</div>
+    <div class="links">
+      <span class="active">Home</span>
+      <span>Work</span>
+      <span>About</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="kicker"><span class="mark"></span><span class="text">portfolio</span><span class="rule"></span></div>
+      <h1 class="title serif">Digital marketing and growth strategist</h1>
+      <p class="role">Trilingual growth strategist building GTM, GEO/AEO, and market-expansion systems across the US, Japan, and Korea.</p>
+    </div>
+    <div class="headshot">
+      <div class="photo photo-a">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        <span>headshot 1</span>
+      </div>
+      <div class="photo photo-b">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        <span>headshot 2</span>
+      </div>
+      <span class="hint">hover to swap</span>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="kicker"><span class="mark"></span><span class="text">about</span><span class="rule"></span></div>
+    <div class="about-grid">
+      <div></div>
+      <div class="about-copy">
+        <p>I'm Kayoko Shimomura, a trilingual marketing strategist who builds growth systems at the intersection of content strategy and AI-driven search.</p>
+        <p>I've led market entry into Korea, rebuilt a study-abroad program's brand to grow enrollment 2.6x, and built the citation-monitoring infrastructure behind a 44x search ranking gain. I work across strategy, data, and design, equally comfortable in a GTM planning doc, a Figma file, or a SQL query.</p>
+        <p>Open to opportunities in growth, marketing, and GTM strategy.</p>
+        <div class="tags">
+          <span class="tag">Growth</span>
+          <span class="tag">GTM</span>
+          <span class="tag">GEO / AEO</span>
+          <span class="tag">APAC market entry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="kicker"><span class="mark"></span><span class="text">work</span><span class="rule"></span></div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <h3>AI search &amp; GEO/AEO strategy</h3>
+        <p>Citation-monitoring system built from scratch, behind a top-3 search overhaul</p>
+        <div class="stat">44x</div>
+        <div class="stat-label">ranking gain</div>
+      </div>
+
+      <div class="work-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg>
+        <h3>Market expansion</h3>
+        <p>Korea and Philippines program growth through rebrand and localization</p>
+        <div class="stat">2.6x</div>
+        <div class="stat-label">PH enrollment, FY</div>
+      </div>
+
+      <div class="work-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg>
+        <h3>Systems &amp; dashboards</h3>
+        <p>Live SEO dashboard in Streamlit, connecting GA4, GSC, and Sheets API</p>
+        <div class="stat">weekly</div>
+        <div class="stat-label">automated refresh</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="kicker"><span class="mark"></span><span class="text">featured project</span><span class="rule"></span></div>
+    <div class="shot-frame">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="ph-label">screenshot of work — dashboard, citation result, or before/after rankings</span>
+      <span class="ph-sub">full-bleed image, 16:9 or wider</span>
+    </div>
+    <p class="annot">single image slot, swap per visit or rotate between case studies</p>
+  </section>
+
+  <footer>
+    <span>Chicago, IL &middot; open to relocate</span>
+    <a href="#">kayoko.shimomura1@gmail.com</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
