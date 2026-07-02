@@ -482,7 +482,7 @@ section.block{ margin-bottom:48px; }
   header.hero h1.title{ font-size:30px; }
   header.hero{ grid-template-columns: 1fr; }
   header.hero .headshot{ width:180px; height:180px; order:-1; margin:0 auto 20px; border-radius:50%; }
-  header.hero .headshot .photo-b img{ object-position:50% 72%; }
+  header.hero .headshot .photo-b img{ object-position:50% 100%; }
   .about-grid{ grid-template-columns: 1fr; gap:8px; }
   .work-grid{ grid-template-columns: 1fr; }
   .intro{ grid-template-columns: 1fr; }
